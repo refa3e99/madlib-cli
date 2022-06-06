@@ -55,4 +55,8 @@ content = read_template(path)
 parsed_content = parse_template(content)
 readable_content = merge(parsed_content,user_input)
 
+f = open("newFile.txt", "w")
+f.write(readable_content)
+f.close()
+
 print(readable_content)
