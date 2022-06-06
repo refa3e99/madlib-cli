@@ -56,3 +56,7 @@ parsed_content = parse_template(content)
 readable_content = merge(parsed_content,user_input)
 
 print(readable_content)
+
+f = open('newFile.txt','w')
+f.write(readable_content)
+f.close()
