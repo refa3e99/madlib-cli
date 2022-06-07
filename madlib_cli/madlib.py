@@ -9,7 +9,7 @@ print(welcome_message)
 
 def read_template(path):
     try:
-        with open(path) as file:
+        with open(path,'r') as file:
             content = file.read()
         return content
     except  FileNotFoundError as err:
@@ -17,14 +17,15 @@ def read_template(path):
 
 def parse_template(string):
     regx = r'{([^}]+)}'
-    language_parts = re.findall(regx,string)
+    language_parts = tuple(re.findall(regx,string))
     initStr = re.sub(regx, "{}", string)
-    return initStr
+    return initStr, language_parts
 
 def merge(bare_tmplt,user_input):
-    string = parse_template(bare_tmplt)
+    string = parse_template(bare_tmplt)[0]
     "invoked_tmplt = bare_tmplt.format(*user_input)"
     return string.format(*user_input)
+
 
 word0 = input('give me an adjective : ')
 word1 = input('give me an adjective : ')
